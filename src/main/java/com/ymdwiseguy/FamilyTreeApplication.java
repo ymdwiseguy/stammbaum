@@ -1,14 +1,13 @@
 package com.ymdwiseguy;
 
-import com.ymdwiseguy.configuration.WebConfiguration;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = {
-        WebConfiguration.class
-})
+@EnableAutoConfiguration
+@ComponentScan
 public class FamilyTreeApplication {
 
 	public static void main(String[] args) {

@@ -1,2 +1,15 @@
 server:
   port: 8090
+
+liquibase:
+  change-log: "classpath:/liquibase/changelog.xml"
+
+spring:
+  datasource:
+    continueOnError: false
+    driverClassName: org.h2.Driver
+    initialize: true
+    platform: h2
+    url: jdbc:h2:mem:treedb
+    password: treedb
+    username: treedb

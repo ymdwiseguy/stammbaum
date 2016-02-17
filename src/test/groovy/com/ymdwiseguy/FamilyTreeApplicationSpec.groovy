@@ -6,7 +6,7 @@ import spock.lang.Specification
 
 @SpringApplicationConfiguration(classes = FamilyTreeApplication.class)
 @WebAppConfiguration
-class FamilyTreeApplicationServiceSpec extends Specification {
+class FamilyTreeApplicationSpec extends Specification {
 
     def "application context loads"() {
         expect: "load application context"
