@@ -155,11 +155,6 @@
             <version>4.2.4.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>3.4.2</version>
-        </dependency>
-        <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-dev</artifactId>
             <version>2.5.1</version>
@@ -174,6 +169,11 @@
             <artifactId>cglib-nodep</artifactId>
             <version>3.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>3.4.0</version>
         </dependency>
     </dependencies>
 

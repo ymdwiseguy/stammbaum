@@ -3,6 +3,7 @@ server:
 
 liquibase:
   change-log: "classpath:/liquibase/changelog.xml"
+  enabled: false
 
 spring:
   datasource:
@@ -10,6 +11,6 @@ spring:
     driverClassName: org.h2.Driver
     initialize: true
     platform: h2
-    url: jdbc:h2:mem:treedb
+    url: jdbc:h2:mem:treedb;DB_CLOSE_ON_EXIT=FALSE
     password: treedb
     username: treedb

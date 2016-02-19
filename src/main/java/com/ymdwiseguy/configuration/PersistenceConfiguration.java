@@ -2,7 +2,6 @@ package com.ymdwiseguy.configuration;
 
 
 import com.ymdwiseguy.FamilyTreeRepo;
-import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -39,12 +38,12 @@ public class PersistenceConfiguration {
         return new FamilyTreeRepo(jdbcTemplate());
     }
 
-    @Bean
-    public SpringLiquibase liquibase() {
-        SpringLiquibase liquibase = new SpringLiquibase();
-        liquibase.setChangeLog(liquibaseChangelog);
-        liquibase.setDataSource(dataSource());
-        return liquibase;
-    }
+//    @Bean
+//    public SpringLiquibase liquibase() {
+//        SpringLiquibase liquibase = new SpringLiquibase();
+//        liquibase.setChangeLog(liquibaseChangelog);
+//        liquibase.setDataSource(dataSource());
+//        return liquibase;
+//    }
 
 }
