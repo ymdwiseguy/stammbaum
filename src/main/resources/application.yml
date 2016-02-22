@@ -14,3 +14,6 @@ spring:
     url: jdbc:h2:mem:treedb;DB_CLOSE_ON_EXIT=FALSE
     password: treedb
     username: treedb
+
+handlebars:
+  prefix: "/templates"
