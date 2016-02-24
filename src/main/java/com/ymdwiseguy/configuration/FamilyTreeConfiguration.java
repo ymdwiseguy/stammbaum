@@ -1,7 +1,9 @@
 package com.ymdwiseguy.configuration;
 
 
+import com.ymdwiseguy.FamilyTreeController;
 import com.ymdwiseguy.FamilyTreeRepo;
+import com.ymdwiseguy.FamilyTreeService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -16,7 +18,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-public class PersistenceConfiguration {
+public class FamilyTreeConfiguration {
 
     @Value("${liquibase.change-log}")
     private String liquibaseChangelog;
@@ -36,6 +38,17 @@ public class PersistenceConfiguration {
     @Bean
     FamilyTreeRepo familyTreeRepo() {
         return new FamilyTreeRepo(jdbcTemplate());
+    }
+
+    @Bean
+    public FamilyTreeController familyTreeController() {
+        return new FamilyTreeController();
+    }
+
+
+    @Bean
+    public FamilyTreeService familyTreeService(){
+        return new FamilyTreeService(familyTreeRepo());
     }
 
 //    @Bean

@@ -1,13 +1,20 @@
 package com.ymdwiseguy;
 
+import com.github.jknack.handlebars.Handlebars;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.Optional;
 import java.util.UUID;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 @Service
 public class FamilyTreeService {
+
+    private static final Logger LOGGER = getLogger(FamilyTreeService.class);
 
     private final FamilyTreeRepo familyTreeRepo;
 
@@ -16,18 +23,18 @@ public class FamilyTreeService {
         this.familyTreeRepo = familyTreeRepo;
     }
 
-    public String render() {
-        UUID uuid = UUID.fromString("73c30299-e6c7-475f-a68b-61d6eb9b65a2");
-        return "<html><head><title>title</title></head><body>" +
-                "<h1>service render</h1>" + this.renderPerson(uuid) +
-                "<body></html>";
+    public Optional<Person> getPerson(UUID uuid) {
+        return familyTreeRepo.getPerson(uuid);
     }
 
-    private String renderPerson(UUID uuid) {
-        Optional<Person> person = familyTreeRepo.getPerson(uuid);
-        if (person.isPresent()) {
-            return "<p>Person: " + person.get().getFirstName() + " "+ person.get().getLastName() + "</p>";
+    public String render(Handlebars handlebars, Optional<Person> displayPerson) {
+        PersonTemplate template;
+        try {
+            template = handlebars.compile("templates/index").as(PersonTemplate.class);
+            return template.apply(displayPerson.get());
+        } catch (IOException e) {
+            LOGGER.error("could not load template file", e);
+            return "Error";
         }
-        return "<p>Person not found</p>";
     }
 }
