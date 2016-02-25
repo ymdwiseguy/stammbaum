@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -25,6 +26,7 @@ public class FamilyTreeController {
         Handlebars handlebars = new Handlebars();
         UUID personUUID = UUID.fromString(uuid);
         Optional<Person> displayPerson = familyTreeService.getPerson(personUUID);
+        ArrayList<Person> parents = familyTreeService.getParents(personUUID);
         return familyTreeService.render(handlebars, displayPerson);
     }
 }

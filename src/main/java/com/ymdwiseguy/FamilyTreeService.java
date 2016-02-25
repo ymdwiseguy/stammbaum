@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -36,5 +38,10 @@ public class FamilyTreeService {
             LOGGER.error("could not load template file", e);
             return "Error";
         }
+    }
+
+    public ArrayList<Person> getParents(UUID personUUID) {
+        List<Person> parents = familyTreeRepo.getListOfPersons(personUUID, "PARENT");
+        return null;
     }
 }

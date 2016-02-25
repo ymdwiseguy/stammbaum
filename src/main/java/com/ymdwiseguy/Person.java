@@ -16,6 +16,10 @@ public class Person {
         setBirthdate(birthdate);
     }
 
+    public Person() {
+
+    }
+
     public UUID getPersonUUID() {
         return personUUID;
     }
