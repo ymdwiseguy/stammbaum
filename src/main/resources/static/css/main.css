@@ -1,0 +1,16 @@
+.person{
+    display:inline; float:left;
+    width:180px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding:10px;
+}
+.person_inner{
+    display:inline;
+    float:left;
+    width:180px;
+    margin-bottom: 2px;
+}
+.person_uuid{
+    font-size:10px;
+}
