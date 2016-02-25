@@ -71,4 +71,29 @@ class FamilyTreeRepoCRUDSpec extends Specification {
         then: "the data was deleted"
         deletedPerson == Optional.empty()
     }
+
+    def "fetching relatives works"(){
+        given: "the repo and a person to fetch"
+        FamilyTreeRepo familyTreeRepo = new FamilyTreeRepo(jdbcTemplate)
+        UUID actualUUID = UUID.fromString('73c30299-e6c7-475f-a68b-61d6eb9b65a2')
+
+        when: "the Person is fetched"
+        Optional<Person> readPerson = familyTreeRepo.getPerson(actualUUID)
+
+        then: "the person can be fetched from H2 db"
+        readPerson.get().getFirstName() == "Matthias"
+
+        when: "the relatives are fetched"
+        List<Person> relatives = familyTreeRepo.getListOfPersons(actualUUID, 'PARENT')
+
+        then: "two parent can be fetched from H2 db"
+        relatives[0].getFirstName() == "Christa" || "Wolfgang"
+        relatives.size() == 2
+
+        when: "the relatives are fetched with a non existant relation"
+        List<Person> nonrelatives = familyTreeRepo.getListOfPersons(actualUUID, 'blablabla')
+
+        then: "no realtives are found"
+        nonrelatives.size() == 0
+    }
 }
