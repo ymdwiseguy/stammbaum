@@ -12,6 +12,7 @@ import javax.validation.ConstraintViolationException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -88,18 +89,23 @@ public class FamilyTreeRepo {
         post.setString(1, person.getPersonUUID().toString());
         post.setString(2, person.getFirstName());
         post.setString(3, person.getLastName());
-        post.setDate(  4, person.getBirthdate());
+        post.setDate(4, person.getBirthdate());
     }
 
 
-
     @Transactional(readOnly = true)
-    public List<Person> getListOfPersons(UUID personUUID, String relation) {
+    public HashMap<String, Person> getListOfPersons(UUID personUUID, String relation) {
         final String sql = "SELECT * FROM PERSON WHERE PERSON_UUID IN (SELECT RELATIVE FROM RELATIONS WHERE PERSON_UUID = ? AND RELATION_TYPE = ?)";
         List<Person> relatives = jdbcTemplate.query(sql, populateRelationStatement(personUUID, relation), personRowMapper);
-
-        LOGGER.info("Found "+relatives.size() + " relatives");
-        return relatives;
+        HashMap<String, Person> relativesMap = new HashMap<>();
+        for (Person relative : relatives) {
+            String uuid = relative.getPersonUUID().toString();
+            if (!relativesMap.containsKey(uuid)) {
+                relativesMap.put(uuid, relative);
+            }
+        }
+        LOGGER.info("Found " + relatives.size() + " relatives");
+        return relativesMap;
     }
 
     private PreparedStatementSetter populateRelationStatement(UUID personUUID, String relation) {

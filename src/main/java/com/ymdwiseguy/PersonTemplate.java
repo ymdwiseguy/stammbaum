@@ -3,6 +3,7 @@ package com.ymdwiseguy;
 import com.github.jknack.handlebars.TypeSafeTemplate;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.UUID;
 
 public interface PersonTemplate extends TypeSafeTemplate<Person> {
@@ -10,4 +11,6 @@ public interface PersonTemplate extends TypeSafeTemplate<Person> {
     public PersonTemplate setFirstName(String firstName);
     public PersonTemplate setLastName(String lastName);
     public PersonTemplate setBirthdate(Date birthdate);
+
+    public PersonTemplate setParents(HashMap<String, Person> parents);
 }

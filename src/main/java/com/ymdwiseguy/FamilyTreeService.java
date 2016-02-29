@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -29,10 +26,14 @@ public class FamilyTreeService {
         return familyTreeRepo.getPerson(uuid);
     }
 
-    public String render(Handlebars handlebars, Optional<Person> displayPerson) {
+    public String render(String uuid) {
+        UUID personUUID = UUID.fromString(uuid);
+        Optional<Person> displayPerson = getPerson(personUUID);
+        HashMap<String, Person> parents = getParents(personUUID);
         PersonTemplate template;
         try {
-            template = handlebars.compile("templates/index").as(PersonTemplate.class);
+            template = getIndexTemplate();
+            template.setParents(parents);
             return template.apply(displayPerson.get());
         } catch (IOException e) {
             LOGGER.error("could not load template file", e);
@@ -40,8 +41,13 @@ public class FamilyTreeService {
         }
     }
 
-    public ArrayList<Person> getParents(UUID personUUID) {
-        List<Person> parents = familyTreeRepo.getListOfPersons(personUUID, "PARENT");
-        return null;
+    private PersonTemplate getIndexTemplate() throws IOException {
+        PersonTemplate template;Handlebars handlebars = new Handlebars();
+        template = handlebars.compile("templates/index").as(PersonTemplate.class);
+        return template;
+    }
+
+    public HashMap<String, Person> getParents(UUID personUUID) {
+        return familyTreeRepo.getListOfPersons(personUUID, "PARENT");
     }
 }

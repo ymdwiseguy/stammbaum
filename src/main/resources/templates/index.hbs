@@ -6,6 +6,11 @@
     <link rel="stylesheet" type="text/css" href="/css/main.css" media="all"/>
 </head>
 <body>
+<div class="parents">
+    {{#each parents}}
+        {{>templates/person}}
+    {{/each}}
+</div>
 {{>templates/person}}
 </body>
 </html>
