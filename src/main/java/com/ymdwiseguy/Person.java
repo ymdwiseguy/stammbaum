@@ -4,12 +4,12 @@ import java.sql.Date;
 import java.util.UUID;
 
 public class Person {
-    private UUID personUUID;
+    private String personUUID;
     private String firstName;
     private String lastName;
     private Date birthdate;
 
-    public Person(UUID person_uuid, String first_name, String last_name, Date birthdate) {
+    public Person(String person_uuid, String first_name, String last_name, Date birthdate) {
         setPersonUUID(person_uuid);
         setFirstName(first_name);
         setLastName(last_name);
@@ -20,11 +20,11 @@ public class Person {
 
     }
 
-    public UUID getPersonUUID() {
+    public String getPersonUUID() {
         return personUUID;
     }
 
-    public void setPersonUUID(UUID personUUID) {
+    public void setPersonUUID(String personUUID) {
         this.personUUID = personUUID;
     }
 
@@ -52,8 +52,8 @@ public class Person {
         this.birthdate = birthdate;
     }
 
-    public UUID createUUID() {
-        UUID uuid = UUID.randomUUID();
+    public String createUUID() {
+        String uuid = UUID.randomUUID().toString();
         this.setPersonUUID(uuid);
         return uuid;
     }

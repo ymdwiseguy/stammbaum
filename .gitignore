@@ -3,3 +3,4 @@
 target
 .idea
 .mvn
+src/main/resources/application.yml

@@ -1,0 +1,24 @@
+server:
+  port: 8090
+
+liquibase:
+  change-log: "classpath:/liquibase/changelog.xml"
+  enabled: false
+
+spring:
+  datasource:
+    continueOnError: false
+    driverClassName: org.h2.Driver
+    initialize: true
+    platform: h2
+    url: jdbc:h2:mem:treedb;DB_CLOSE_ON_EXIT=FALSE
+    password: treedb
+    username: treedb
+    schema: "classpath:/schema-h2.sql"
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+handlebars:
+  prefix: "/templates"

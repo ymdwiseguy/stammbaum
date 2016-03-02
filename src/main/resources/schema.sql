@@ -1,12 +1,14 @@
-CREATE TABLE IF NOT EXISTS PERSON (
-  PERSON_UUID UUID,
-  FIRST_NAME VARCHAR(4096),
-  LAST_NAME VARCHAR (4096),
-  BIRTHDATE DATE,
-);
 
-CREATE TABLE IF NOT EXISTS RELATIONS (
-  PERSON_UUID UUID,
-  RELATIVE UUID,
-  RELATION_TYPE VARCHAR(4096)
+CREATE TABLE IF NOT EXISTS `person` (
+  `person_uuid` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `first_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `birthdate` date NOT NULL,
+  UNIQUE KEY `person_uuid` (`person_uuid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS relations (
+  person_uuid  varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  relative  varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  relation_type  varchar(100) COLLATE utf8_unicode_ci NOT NULL
 )

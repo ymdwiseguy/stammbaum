@@ -22,19 +22,21 @@ public class FamilyTreeService {
         this.familyTreeRepo = familyTreeRepo;
     }
 
-    public Optional<Person> getPerson(UUID uuid) {
+    public Optional<Person> getPerson(String uuid) {
         return familyTreeRepo.getPerson(uuid);
     }
 
-    public String render(String uuid) {
-        UUID personUUID = UUID.fromString(uuid);
+    public String render(String personUUID) {
         Optional<Person> displayPerson = getPerson(personUUID);
         HashMap<String, Person> parents = getParents(personUUID);
         PersonTemplate template;
         try {
             template = getIndexTemplate();
             template.setParents(parents);
-            return template.apply(displayPerson.get());
+            if(displayPerson.isPresent()) {
+                return template.apply(displayPerson.get());
+            }
+            return template.apply(null);
         } catch (IOException e) {
             LOGGER.error("could not load template file", e);
             return "Error";
@@ -47,7 +49,7 @@ public class FamilyTreeService {
         return template;
     }
 
-    public HashMap<String, Person> getParents(UUID personUUID) {
+    public HashMap<String, Person> getParents(String personUUID) {
         return familyTreeRepo.getListOfPersons(personUUID, "PARENT");
     }
 }

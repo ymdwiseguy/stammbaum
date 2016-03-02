@@ -9,11 +9,11 @@ class FamilyTreeRepoSpec extends Specification {
 
     def JdbcTemplate jdbcTemplate
     Person person;
-    UUID uuid;
+    String uuid;
 
     def setup(){
         jdbcTemplate = Mock(JdbcTemplate)
-        uuid = UUID.randomUUID()
+        uuid = UUID.randomUUID().toString()
         Date birthdate = new Date(1980,7,11)
         person = new Person(uuid, "Matthias", "D.", birthdate as Date)
     }
@@ -55,8 +55,8 @@ class FamilyTreeRepoSpec extends Specification {
 
     def "fetching relatives returnes a list of persons"(){
         given: "the repo returning a Person"
-        Person mother = new Person(UUID.randomUUID(), "Christa", "D.", new Date(1953,4,10))
-        Person father = new Person(UUID.randomUUID(), "Wolfgang", "D.", new Date(1944,3,3))
+        Person mother = new Person(UUID.randomUUID().toString(), "Christa", "D.", new Date(1953,4,10))
+        Person father = new Person(UUID.randomUUID().toString(), "Wolfgang", "D.", new Date(1944,3,3))
         ArrayList<Person> relatives = new ArrayList()
         relatives.push(mother)
         relatives.push(father)
@@ -64,7 +64,7 @@ class FamilyTreeRepoSpec extends Specification {
         FamilyTreeRepo familyTreeRepo = new FamilyTreeRepo(jdbcTemplate)
 
         when: "the repo is read"
-        ArrayList<Person> getRelatives = familyTreeRepo.getListOfPersons(uuid, 'parent')
+        HashMap<String, Person> getRelatives = familyTreeRepo.getListOfPersons(uuid, 'parent')
 
         then: "the expected list of persons is returned"
         getRelatives.size() == 2
