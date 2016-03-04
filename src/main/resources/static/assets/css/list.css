@@ -1,0 +1,23 @@
+.ft-table{
+    width:100%;
+}
+
+.ft-table__head{
+    background: forestgreen;
+    border: 1px solid #666;
+    color:#fff;
+    font-size: 14px;
+    text-align: left;
+}
+
+td, th{
+    padding: 8px;
+}
+
+.ft-table__row:nth-child(even) {
+    background: #eee;
+}
+
+.ft-table__row:nth-child(odd) {
+    background: #fff;
+}

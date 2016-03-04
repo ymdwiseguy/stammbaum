@@ -1,6 +1,8 @@
-package com.ymdwiseguy;
+package com.ymdwiseguy.views;
 
 import com.github.jknack.handlebars.Handlebars;
+import com.ymdwiseguy.Person;
+import com.ymdwiseguy.PersonTemplate;
 import org.slf4j.Logger;
 
 import java.io.IOException;

@@ -2,19 +2,19 @@
     display: inline; float:left;
     width:100%;
 }
-.person{
+.ft-person{
     display:inline; float:left;
     width:180px;
     border: 1px solid black;
     border-radius: 5px;
     padding:10px;
 }
-.person_inner{
+.ft-person__inner{
     display:inline;
     float:left;
     width:180px;
     margin-bottom: 2px;
 }
-.person_uuid{
+.parents .person_uuid{
     font-size:10px;
 }

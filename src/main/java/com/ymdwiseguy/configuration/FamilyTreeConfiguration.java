@@ -5,7 +5,9 @@ import com.github.jknack.handlebars.Handlebars;
 import com.ymdwiseguy.FamilyTreeController;
 import com.ymdwiseguy.FamilyTreeRepo;
 import com.ymdwiseguy.FamilyTreeService;
-import com.ymdwiseguy.FamilyTreeView;
+import com.ymdwiseguy.views.FamilyTreeView;
+import com.ymdwiseguy.views.ListPersonsView;
+import com.ymdwiseguy.views.NewPersonGetView;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -63,12 +65,14 @@ public class FamilyTreeConfiguration {
         return new FamilyTreeView(handlebars());
     }
 
-//    @Bean
-//    public SpringLiquibase liquibase() {
-//        SpringLiquibase liquibase = new SpringLiquibase();
-//        liquibase.setChangeLog(liquibaseChangelog);
-//        liquibase.setDataSource(dataSource());
-//        return liquibase;
-//    }
+    @Bean
+    public ListPersonsView listPersonsView() {
+        return new ListPersonsView(handlebars());
+    }
+
+    @Bean
+    public NewPersonGetView newPersonView() {
+        return new NewPersonGetView(handlebars());
+    }
 
 }

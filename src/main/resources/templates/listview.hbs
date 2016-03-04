@@ -1,0 +1,24 @@
+{{> templates/partials/page-anatomy/page-head }}
+<body>
+
+{{> templates/partials/page-anatomy/page-header }}
+
+<main>
+    <table class="ft-table">
+        <thead class="ft-table__head">
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Birthday</th>
+            <th>UUID</th>
+        </tr>
+        </thead>
+        {{#each parents}}
+            {{>templates/partials/table-person}}
+        {{/each}}
+    </table>
+</main>
+
+</body>
+
+{{> templates/partials/page-anatomy/page-foot }}

@@ -107,6 +107,21 @@ public class FamilyTreeRepo {
         return relativesMap;
     }
 
+    @Transactional(readOnly = true)
+    public HashMap<String, Person> getListOfAllPersons() {
+        final String sql = "SELECT * FROM person ORDER BY last_name ASC, first_name ASC LIMIT 50";
+        List<Person> relatives = jdbcTemplate.query(sql, personRowMapper);
+        HashMap<String, Person> relativesMap = new HashMap<>();
+        for (Person relative : relatives) {
+            String uuid = relative.getPersonUUID();
+            if (!relativesMap.containsKey(uuid)) {
+                relativesMap.put(uuid, relative);
+            }
+        }
+        LOGGER.info("Found " + relatives.size() + " persons");
+        return relativesMap;
+    }
+
     private PreparedStatementSetter populateRelationStatement(String personUUID, String relation) {
         return (PreparedStatement ps) -> {
             ps.setString(1, personUUID);
@@ -122,4 +137,5 @@ public class FamilyTreeRepo {
         person.setBirthdate(rs.getDate("birthdate"));
         return person;
     };
+
 }

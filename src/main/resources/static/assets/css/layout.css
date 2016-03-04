@@ -1,0 +1,75 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* new clearfix */
+.clearfix:after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+html, body {
+    font-family: Helvetica, Verdana, Arial, sans-serif;
+    font-size: 16px;
+    margin: 0 auto;
+    max-width: 1440px;
+    min-width: 320px;
+    width: 100%;
+}
+
+body {
+    background: #ddd;
+}
+
+header, main {
+    padding: 15px;
+}
+
+/* header */
+header {
+    margin-top: 15px;
+    background: forestgreen;
+}
+
+header h1 {
+    color: #fff;
+    font-size: 30px;
+    font-weight: normal;
+    height: 80px;
+    margin: 0;
+    line-height: 80px;
+}
+
+nav {
+    background: limegreen;
+}
+nav a{
+    color: #fff;
+    font-size: 14px;
+    font-weight: normal;
+    height: 30px;
+    margin: 0;
+    line-height: 30px;
+}
+
+/* Sections */
+section {
+    background: #fff;
+    padding: 10px;
+}
+
+section + section {
+    border-top: 1px solid #eee;
+}
+
+section > h2 {
+    margin-top: 5px;
+}

@@ -25,9 +25,11 @@ public class FamilyTreeService {
         return familyTreeRepo.getPerson(uuid);
     }
 
-
-
     public HashMap<String, Person> getParents(String personUUID) {
         return familyTreeRepo.getListOfPersons(personUUID, "PARENT");
+    }
+
+    public HashMap<String, Person> getPersons() {
+        return familyTreeRepo.getListOfAllPersons();
     }
 }
