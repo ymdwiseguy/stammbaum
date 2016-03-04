@@ -13,6 +13,9 @@ import java.util.HashMap;
 import java.util.Optional;
 
 import static org.slf4j.LoggerFactory.getLogger;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 @RestController
 public class FamilyTreeController {
@@ -38,15 +41,29 @@ public class FamilyTreeController {
         HashMap<String, Person> parents = familyTreeService.getParents(uuid);
         return familyTreeView.render(displayPerson, parents);
     }
+
     @RequestMapping(value = "/list")
     public String list() {
         LOGGER.info("Render list of all persons");
         HashMap<String, Person> persons = familyTreeService.getPersons();
         return listPersonsView.render(persons);
     }
-    @RequestMapping(value = "/person")
+
+    @RequestMapping(value = "/person", method = GET)
     public String form() {
         LOGGER.info("Render form for new person");
+        return newPersonGetView.render();
+    }
+
+    @RequestMapping(value = "/person", method = POST)
+    public String postForm() {
+        LOGGER.info("Handle post for new person");
+        return newPersonGetView.render();
+    }
+
+    @RequestMapping(value = "/person", method = PUT)
+    public String putForm() {
+        LOGGER.info("Handle edit for person");
         return newPersonGetView.render();
     }
 }
