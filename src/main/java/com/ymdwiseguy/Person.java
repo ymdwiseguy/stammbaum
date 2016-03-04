@@ -8,6 +8,7 @@ public class Person {
     private String firstName;
     private String lastName;
     private Date birthdate;
+    private String additionalInformation;
 
     public Person(String person_uuid, String first_name, String last_name, Date birthdate) {
         setPersonUUID(person_uuid);
@@ -50,6 +51,14 @@ public class Person {
 
     public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public String getAdditionalInformation() {
+        return additionalInformation;
+    }
+
+    public void setAdditionalInformation(String additionalInformation) {
+        this.additionalInformation = additionalInformation;
     }
 
     public String createUUID() {

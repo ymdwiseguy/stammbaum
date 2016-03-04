@@ -44,7 +44,7 @@ public class FamilyTreeController {
         HashMap<String, Person> persons = familyTreeService.getPersons();
         return listPersonsView.render(persons);
     }
-    @RequestMapping(value = "/form")
+    @RequestMapping(value = "/person")
     public String form() {
         LOGGER.info("Render form for new person");
         return newPersonGetView.render();

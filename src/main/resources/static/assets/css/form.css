@@ -1,13 +1,12 @@
 
 
 /* Success */
-.rsas-success {
+.ft-success {
     background: green;
     color: white;
 }
 
-.rsas-success__headline {
-    background-image: url(../img/bg-success.gif);
+.ft-success__headline {
     background-position: 40px 0;
     background-repeat: no-repeat;
     background-size: 300px 300px;
@@ -18,50 +17,50 @@
 }
 
 /* Formular */
-.rsas-form__fieldset {
+.ft-form__fieldset {
     border: none;
     margin: 0;
     padding: 0;
 }
 
-.rsas-form__legend {
+.ft-form__legend {
     display: none;
 }
 
-.rsas-form__row {
+.ft-form__row {
     padding: 4px;
 }
 
-.rsas-form__row + .rsas-form__row {
+.ft-form__row + .ft-form__row {
     margin-top: 10px;
 }
 
-.rsas-form__label {
+.ft-form__label {
     cursor: pointer;
     display: block;
 }
 
-.rsas-form__input,
-.rsas-form__textarea {
+.ft-form__input,
+.ft-form__textarea {
     border: 1px solid #ccc;
     padding: 4px 10px;
     width: 100%;
 }
 
-.rsas-form__textarea {
+.ft-form__textarea {
     height: 100px;
 }
 
-.rsas-form__label + .rsas-form__input,
-.rsas-form__label + .rsas-form__textarea {
+.ft-form__label + .ft-form__input,
+.ft-form__label + .ft-form__textarea {
     border-radius: 4px;
     margin-top: 5px;
 }
 
-.rsas-form__button {
-    background: #cc071e;
+.ft-form__button {
+    background: forestgreen;
     color: #fff;
-    border: 1px solid #cc071e;
+    border: 1px solid forestgreen;
     font-size: 20px;
     font-weight: normal;
     height: 50px;
@@ -71,13 +70,12 @@
     width: 100%;
 }
 
-.rsas-form__button:hover {
-    background: #a0081a;
-    border-color: #a0081a;
+.ft-form__button:hover {
+    background: limegreen;
+    border-color: limegreen;
 }
 
-.rsas-form__information,
-.rsas-form__errormessage {
+.ft-form__errormessage {
     background: #eee;
     border-radius: 4px;
     border: 1px dashed #000;
@@ -87,37 +85,36 @@
     padding: 5px;
 }
 
-.rsas-form__errormessage {
+.ft-form__errormessage {
     border-color: #cc071e;
     color: #cc071e;
 }
 
-.rsas-form__row--error .rsas-form__input,
-.rsas-form__row--error .rsas-form__textarea{
+.ft-form__row--error .ft-form__input,
+.ft-form__row--error .ft-form__textarea{
     border-color: #cc071e;
 }
 
 @media only screen and (min-width: 980px) {
-    .rsas-form__row {
+    .ft-form__row {
         min-height: 46px;
     }
 
-    .rsas-form__label {
+    .ft-form__label {
         display: inline-block;
         float: left;
         line-height: 38px;
         width: 20%;
     }
 
-    .rsas-form__input,
-    .rsas-form__textarea {
+    .ft-form__input,
+    .ft-form__textarea {
         display: inline-block;
         float: right;
         width: 80%;
     }
 
-    .rsas-form__information,
-    .rsas-form__errormessage {
+    .ft-form__errormessage {
         clear: both;
     }
 

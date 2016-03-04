@@ -11,6 +11,7 @@ public interface PersonTemplate extends TypeSafeTemplate<Person> {
     public PersonTemplate setFirstName(String firstName);
     public PersonTemplate setLastName(String lastName);
     public PersonTemplate setBirthdate(Date birthdate);
+    public PersonTemplate setAdditionalInformation(String additionalInformation);
 
     public PersonTemplate setParents(HashMap<String, Person> parents);
 }

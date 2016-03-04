@@ -1,0 +1,47 @@
+<section>
+    <h2>Add new person</h2>
+    <form action="/person" method="post" class="ft-form">
+
+    <fieldset class="ft-form__fieldset">
+        <legend class="ft-form__legend">Person data</legend>
+
+        <div class="ft-form__row{{#if errors.firstName}} ft-form__row--error{{/if}} clearfix">
+            <label for="ft-firstname" class="ft-form__label">First name</label>
+            <input type="text" name="firstName" id="ft-firstname" class="ft-form__input" value="{{firstName}}">
+            {{#if errors.firstName}}
+            <p class="ft-form__errormessage"><strong>Error:</strong> {{errors.firstName}}</p>
+            {{/if}}
+        </div>
+
+        <div class="ft-form__row{{#if errors.lastName}} ft-form__row--error{{/if}} clearfix">
+            <label for="ft-lastname" class="ft-form__label">Last name</label>
+            <input type="text" name="lastName" id="ft-lastname" class="ft-form__input" value="{{lastName}}">
+            {{#if errors.lastName}}
+            <p class="ft-form__errormessage"><strong>Error:</strong> {{errors.lastName}}</p>
+            {{/if}}
+        </div>
+
+        <div class="ft-form__row{{#if errors.birthdate}} ft-form__row--error{{/if}} clearfix">
+            <label for="ft-birthdate" class="ft-form__label">Birthdate (yyyy-mm-dd)</label>
+            <input type="text" name="birthdate" id="ft-birthdate" class="ft-form__input" value="{{birthdate}}">
+            {{#if errors.birthdate}}
+            <p class="ft-form__errormessage"><strong>Error:</strong> {{errors.birthdate}}</p>
+            {{/if}}
+        </div>
+
+        <div class="ft-form__row{{#if errors.additionalInformation}} ft-form__row--error{{/if}} clearfix">
+            <label for="ft-additionalinformation" class="ft-form__label">Additional Information</label>
+            <textarea name="additionalInformation" id="ft-additionalinformation" cols="30" rows="10" class="ft-form__textarea">{{additionalInformation}}</textarea>
+            {{#if errors.additionalInformation}}
+            <p class="ft-form__errormessage"><strong>Error:</strong> {{errors.additionalInformation}}</p>
+            {{/if}}
+        </div>
+
+        <div class="ft-form__row ft-form__row--submit clearfix">
+            <button type="submit" name="submit_client" class="ft-form__button">Submit and insert</button>
+        </div>
+
+    </fieldset>
+
+</form> <!-- /.ft-form -->
+</section>
