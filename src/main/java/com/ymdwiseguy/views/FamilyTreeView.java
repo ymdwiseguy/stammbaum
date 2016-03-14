@@ -2,7 +2,7 @@ package com.ymdwiseguy.views;
 
 import com.github.jknack.handlebars.Handlebars;
 import com.ymdwiseguy.Person;
-import com.ymdwiseguy.PersonTemplate;
+import com.ymdwiseguy.PageTemplate;
 import org.slf4j.Logger;
 
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class FamilyTreeView {
 
     public String render(Optional<Person> displayPerson, HashMap<String, Person> parents) {
 
-        PersonTemplate template;
+        PageTemplate template;
         try {
             template = getIndexTemplate();
             template.setParents(parents);
@@ -37,9 +37,10 @@ public class FamilyTreeView {
     }
 
 
-    private PersonTemplate getIndexTemplate() throws IOException {
-        PersonTemplate template;
-        template = handlebars.compile("templates/index").as(PersonTemplate.class);
+    private PageTemplate getIndexTemplate() throws IOException {
+        PageTemplate template;
+        template = handlebars.compile("templates/index").as(PageTemplate.class);
+        template.setPageTitle("Home");
         return template;
     }
 }

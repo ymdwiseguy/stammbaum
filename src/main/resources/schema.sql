@@ -4,6 +4,8 @@ CREATE TABLE IF NOT EXISTS `person` (
   `first_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `last_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `birthdate` date NOT NULL,
+  `created` int NOT NULL,
+  `modified` int NOT NULL,
   UNIQUE KEY `person_uuid` (`person_uuid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

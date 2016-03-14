@@ -2,7 +2,7 @@ package com.ymdwiseguy;
 
 import com.ymdwiseguy.views.FamilyTreeView;
 import com.ymdwiseguy.views.ListPersonsView;
-import com.ymdwiseguy.views.NewPersonGetView;
+import com.ymdwiseguy.views.PersonFormView;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +15,6 @@ import java.util.Optional;
 import static org.slf4j.LoggerFactory.getLogger;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
-import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 @RestController
 public class FamilyTreeController {
@@ -32,7 +31,7 @@ public class FamilyTreeController {
     ListPersonsView listPersonsView;
 
     @Autowired
-    NewPersonGetView newPersonGetView;
+    PersonFormView personFormView;
 
     @RequestMapping(value = "/")
     public String index(@RequestParam(value = "uuid", required = false, defaultValue = "73c30299-e6c7-475f-a68b-61d6eb9b65a2") String uuid) {
@@ -52,18 +51,18 @@ public class FamilyTreeController {
     @RequestMapping(value = "/person", method = GET)
     public String form() {
         LOGGER.info("Render form for new person");
-        return newPersonGetView.render();
+        return personFormView.render();
     }
 
     @RequestMapping(value = "/person", method = POST)
     public String postForm() {
         LOGGER.info("Handle post for new person");
-        return newPersonGetView.render();
+        return personFormView.render();
     }
 
-    @RequestMapping(value = "/person", method = PUT)
+    @RequestMapping(value = "/person/{id}", method = POST)
     public String putForm() {
         LOGGER.info("Handle edit for person");
-        return newPersonGetView.render();
+        return personFormView.render();
     }
 }

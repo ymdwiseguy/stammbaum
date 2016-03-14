@@ -1,24 +1,24 @@
 package com.ymdwiseguy.views;
 
 import com.github.jknack.handlebars.Handlebars;
-import com.ymdwiseguy.PersonTemplate;
+import com.ymdwiseguy.PageTemplate;
 import org.slf4j.Logger;
 
 import java.io.IOException;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-public class NewPersonGetView {
+public class PersonFormView {
 
-    private static final Logger LOGGER = getLogger(NewPersonGetView.class);
+    private static final Logger LOGGER = getLogger(PersonFormView.class);
     private final Handlebars handlebars;
 
-    public NewPersonGetView(final Handlebars handlebars) {
+    public PersonFormView(final Handlebars handlebars) {
         this.handlebars = handlebars;
     }
 
     public String render() {
-        PersonTemplate template;
+        PageTemplate template;
         try {
             template = getIndexTemplate();
             return template.apply(null);
@@ -28,9 +28,10 @@ public class NewPersonGetView {
         }
     }
 
-    private PersonTemplate getIndexTemplate() throws IOException {
-        PersonTemplate template;
-        template = handlebars.compile("templates/editperson").as(PersonTemplate.class);
+    private PageTemplate getIndexTemplate() throws IOException {
+        PageTemplate template;
+        template = handlebars.compile("templates/editperson").as(PageTemplate.class);
+        template.setPageTitle("Create new person");
         return template;
     }
 }

@@ -2,12 +2,11 @@ package com.ymdwiseguy.configuration;
 
 
 import com.github.jknack.handlebars.Handlebars;
-import com.ymdwiseguy.FamilyTreeController;
 import com.ymdwiseguy.FamilyTreeRepo;
 import com.ymdwiseguy.FamilyTreeService;
 import com.ymdwiseguy.views.FamilyTreeView;
 import com.ymdwiseguy.views.ListPersonsView;
-import com.ymdwiseguy.views.NewPersonGetView;
+import com.ymdwiseguy.views.PersonFormView;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -50,12 +49,6 @@ public class FamilyTreeConfiguration {
     }
 
     @Bean
-    public FamilyTreeController familyTreeController() {
-        return new FamilyTreeController();
-    }
-
-
-    @Bean
     public FamilyTreeService familyTreeService(){
         return new FamilyTreeService(familyTreeRepo());
     }
@@ -71,8 +64,8 @@ public class FamilyTreeConfiguration {
     }
 
     @Bean
-    public NewPersonGetView newPersonView() {
-        return new NewPersonGetView(handlebars());
+    public PersonFormView newPersonView() {
+        return new PersonFormView(handlebars());
     }
 
 }

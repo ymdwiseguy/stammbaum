@@ -2,7 +2,7 @@ package com.ymdwiseguy.views;
 
 import com.github.jknack.handlebars.Handlebars;
 import com.ymdwiseguy.Person;
-import com.ymdwiseguy.PersonTemplate;
+import com.ymdwiseguy.PageTemplate;
 import org.slf4j.Logger;
 
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class ListPersonsView {
 
     public String render(HashMap<String, Person> persons) {
 
-        PersonTemplate template;
+        PageTemplate template;
         try {
             template = getIndexTemplate();
             template.setParents(persons);
@@ -33,9 +33,10 @@ public class ListPersonsView {
     }
 
 
-    private PersonTemplate getIndexTemplate() throws IOException {
-        PersonTemplate template;
-        template = handlebars.compile("templates/listview").as(PersonTemplate.class);
+    private PageTemplate getIndexTemplate() throws IOException {
+        PageTemplate template;
+        template = handlebars.compile("templates/listview").as(PageTemplate.class);
+        template.setPageTitle("List of all persons");
         return template;
     }
 }
